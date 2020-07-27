@@ -18,26 +18,24 @@ console.log(plots);
 function draw(e) {
     if(!isActive) return;
 
-    console.log(e);
-    console.log(plots);
-
     // cross-browser canvas coordinates
     var x = e.offsetX || e.layerX - canvas.offsetLeft;
     var y = e.offsetY || e.layerY - canvas.offsetTop;
 
     plots.push({x: x, y: y});
 
-    drawOnCanvas(this.plots);
+    drawOnCanvas("#ff0000", plots);
 }
 
 // draws plot onto the canvas
 function drawOnCanvas(color, plots) {
     ctx.beginPath();
-    ctx.moveTo(plots[0].x, plots[0].y);
+    ctx.moveTo(this.plots[0].x, this.plots[0].y);
 
-    for(var i=1; i<plots.length; i++) {
-        ctx.lineTo(plots[i].x, plots[i].y);
+    for(var i = 1; i < this.plots.length; i++) {
+        ctx.lineTo(this.plots[i].x, this.plots[i].y);
     }
+    ctx.strokeStyle = color;
     ctx.stroke();
 }
 
