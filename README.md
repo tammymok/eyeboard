@@ -2,6 +2,7 @@
 Draw with your eyes!!!! O.O
 
 # TODO
+ - make the canvas synchronous / collaborative
  - Add popup overlays (React)
  - something is wrong with `git push heroku heroku'; push to origin heroku instead
 
