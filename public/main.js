@@ -2,7 +2,7 @@ var canvas = document.getElementById('drawCanvas');
 var ctx = canvas.getContext('2d');
 ctx.lineWidth = '3';
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.height = 0.8 * window.innerHeight;
 canvas.addEventListener('mousedown', startDraw);
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mouseup', endDraw);
