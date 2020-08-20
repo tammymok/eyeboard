@@ -16,9 +16,18 @@ const server = app.use((req, res) => res.sendFile(INDEX, { root: __dirname }))
 // Create a Socket.io server
 const io = socketIO(server);
 
-// Handle connections
+var messages = [];
+
+var cookie = {
+  index: 0
+};
+
+// Handle connections (on first connection)
 io.on('connection', (socket) => {
   console.log('Client connected');
+  
+  // write entire array
+  messages.forEach((msg) => socket.emit('chat message', msg));
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
@@ -33,6 +42,7 @@ app.get('/', (req, res) => {
 // Listen for chat message being emitted
 io.on('connection', (socket) => {
     socket.on('chat message', (msg) => {
+      messages.push(msg);
       io.emit('chat message', msg);
     });
   });

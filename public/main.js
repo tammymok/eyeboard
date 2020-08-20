@@ -1,12 +1,13 @@
 var canvas = document.getElementById('drawCanvas');
+canvas.width = 0.8 * window.innerWidth;
+canvas.height = window.innerHeight;
 var ctx = canvas.getContext('2d');
 ctx.lineWidth = '3';
-canvas.width = window.innerWidth;
-canvas.height = 0.8 * window.innerHeight;
+ctx.fillStyle = '#EEEEEE';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
 canvas.addEventListener('mousedown', startDraw);
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mouseup', endDraw);
-
 
 // create a flag
 var isActive = false;
@@ -24,7 +25,7 @@ function draw(e) {
 
     plots.push({x: x, y: y});
 
-    drawOnCanvas("#ff0000", plots);
+    drawOnCanvas("#222222", plots);
 }
 
 // draws plot onto the canvas
