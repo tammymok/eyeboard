@@ -48,5 +48,9 @@ function startDraw(e) {
 function endDraw(e) {
     console.log("ending drawing!!");
     isActive = false;
+
+    // emit brush stroke
+
+
     plots = []; // clear array
 }

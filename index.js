@@ -25,7 +25,13 @@ var cookie = {
 // Handle connections (on first connection)
 io.on('connection', (socket) => {
   console.log('Client connected');
-  
+
+  // listen for chat message being emitted
+  socket.on('chat message', (msg) => {
+    messages.push(msg);           // add message to char array
+    io.emit('chat message', msg); // send messages to everyone
+  });
+
   // write entire array
   messages.forEach((msg) => socket.emit('chat message', msg));
   socket.on('disconnect', () => console.log('Client disconnected'));
@@ -40,9 +46,6 @@ app.get('/', (req, res) => {
 });
 
 // Listen for chat message being emitted
-io.on('connection', (socket) => {
-    socket.on('chat message', (msg) => {
-      messages.push(msg);
-      io.emit('chat message', msg);
-    });
-  });
+//io.on('connection', (socket) => {
+//
+//});
